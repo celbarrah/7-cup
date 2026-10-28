@@ -8,23 +8,12 @@ npm run dev     # http://localhost:3000  →  redirects to /fr
 npm run build && npm start
 ```
 
-## Deploy (Cloudflare Workers via OpenNext)
+## Deploy (Vercel)
 
-Hosted on Cloudflare Workers using [`@opennextjs/cloudflare`](https://opennext.js.org/cloudflare). Config: `wrangler.jsonc`, `open-next.config.ts`, `public/_headers`.
+1. vercel.com → **Add New → Project** → import `celbarrah/7-cup`. Framework is auto-detected (Next.js); keep the default build settings.
+2. **Settings → Domains** → add `info.ic7m.com`, then create the DNS record Vercel shows at your DNS provider (a `CNAME` for `info` pointing to Vercel).
 
-Cloudflare dashboard → Workers Builds settings:
-
-| Setting | Value |
-| --- | --- |
-| Build command | `npx opennextjs-cloudflare build` |
-| Deploy command | `npx opennextjs-cloudflare deploy` |
-| Preview (non-production branch) command | `npx opennextjs-cloudflare upload` |
-
-The Worker name in the dashboard must match `"name"` in `wrangler.jsonc` (`7-cup`).
-
-Locally: `npm run preview` builds and runs the Worker in the real Cloudflare runtime (http://localhost:8787); `npm run deploy` deploys from your machine (needs `npx wrangler login`).
-
-All pages are prerendered and served from the read-only static-assets cache — no R2/KV needed. `next/image` resizing uses the Cloudflare Images binding (`IMAGES`).
+Every push to `main` deploys to production; other branches get preview URLs.
 
 ## Routes
 

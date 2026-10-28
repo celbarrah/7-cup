@@ -8,7 +8,23 @@ npm run dev     # http://localhost:3000  →  redirects to /fr
 npm run build && npm start
 ```
 
-Deploys on Vercel with zero config (or any Node host).
+## Deploy (Cloudflare Workers via OpenNext)
+
+Hosted on Cloudflare Workers using [`@opennextjs/cloudflare`](https://opennext.js.org/cloudflare). Config: `wrangler.jsonc`, `open-next.config.ts`, `public/_headers`.
+
+Cloudflare dashboard → Workers Builds settings:
+
+| Setting | Value |
+| --- | --- |
+| Build command | `npx opennextjs-cloudflare build` |
+| Deploy command | `npx opennextjs-cloudflare deploy` |
+| Preview (non-production branch) command | `npx opennextjs-cloudflare upload` |
+
+The Worker name in the dashboard must match `"name"` in `wrangler.jsonc` (`7-cup`).
+
+Locally: `npm run preview` builds and runs the Worker in the real Cloudflare runtime (http://localhost:8787); `npm run deploy` deploys from your machine (needs `npx wrangler login`).
+
+All pages are prerendered and served from the read-only static-assets cache — no R2/KV needed. `next/image` resizing uses the Cloudflare Images binding (`IMAGES`).
 
 ## Routes
 

@@ -37,7 +37,7 @@ const en = {
     trust: [
       ['22', 'countries'],
       ['3,500+', 'players'],
-      ['400', 'companies'],
+      ['600', 'companies'],
     ],
     cardLabel: 'Kick-off countdown',
     spots: '64 teams max',
@@ -80,7 +80,7 @@ const en = {
     rows: [
       { title: 'Cohesion', sub: 'A united team — at the office as on the field.', stat: '92%', statLbl: 'see stronger cohesion' },
       { title: 'Motivation', sub: 'Healthy emulation that re-engages every department.', stat: '87%', statLbl: 'recommend the experience' },
-      { title: 'Retention', sub: 'Pride in the company colours — the kind that keeps talent.', stat: '400', statLbl: 'companies have played' },
+      { title: 'Retention', sub: 'Pride in the company colours — the kind that keeps talent.', stat: '600', statLbl: 'companies have played' },
     ],
   },
   program: {
@@ -284,7 +284,7 @@ const fr: Dict = {
     trust: [
       ['22', 'pays'],
       ['3 500+', 'joueurs'],
-      ['400', 'entreprises'],
+      ['600', 'entreprises'],
     ],
     cardLabel: "Coup d'envoi dans",
     spots: '64 équipes max',
@@ -330,7 +330,7 @@ const fr: Dict = {
       {
         title: 'Rétention',
         sub: "La fierté de porter les couleurs de l'entreprise — celle qui retient les talents.",
-        stat: '400',
+        stat: '600',
         statLbl: 'entreprises ont joué',
       },
     ],

@@ -8,7 +8,7 @@ const en = {
   meta: {
     title: 'International 7 Cup 2027 · Grand Stadium of Marrakech — Play Like a Pro',
     description:
-      'The international inter-company football tournament. 4 all-inclusive days at the Grand Stadium of Marrakech, May 27–30, 2027. 22 countries, 3,500+ participants, 64 teams max.',
+      'The international 7-a-side inter-company football tournament. 4 all-inclusive days at the Grand Stadium of Marrakech, May 27–30, 2027. 22 countries, 3,500+ participants, 64 teams max.',
     ogTitle: 'International 7 Cup 2027 — Play Like a Pro at the Grand Stadium of Marrakech',
     ogDescription: '4 all-inclusive days. 22 countries. 64 teams max. Book your call.',
   },
@@ -29,7 +29,7 @@ const en = {
     chip: '12th Edition · May 27–30, 2027',
     title1: 'Where your team',
     title2: 'plays like pros.',
-    subPre: 'The international inter-company football tournament at the ',
+    subPre: 'The international 7-a-side inter-company football tournament at the ',
     subStrong: 'Grand Stadium of Marrakech',
     subPost: '. Four all-inclusive days: pro pitch, 5★ hotel, gala night and live TV.',
     ctaBook: 'Book your free call',
@@ -87,7 +87,7 @@ const en = {
     eyebrow: 'The Program',
     title: '4 days. Zero surprises. ',
     titleEm: 'All-inclusive.',
-    lead: 'Military-grade organisation. You bring the team — we handle everything else.',
+    lead: 'A high-level organisation. You bring the team — we handle everything else.',
     highlight: '★ Highlight',
     days: [
       { date: 'Thu · May 27', title: 'The Arrival', items: ['Welcome at your 5★ hotel', 'Airport transfers handled', 'Dinner, drinks included'] },
@@ -97,7 +97,7 @@ const en = {
     ],
     format: [
       ['Pitch', 'Natural grass, FIFA standard'],
-      ['Teams', '7-a-side · 7 to 12 players'],
+      ['Teams', '7-a-side · 10 to 14 players'],
       ['Matches', '2 × 12 min · min. 3 games'],
       ['Safety', 'Official referees + medical staff'],
     ],
@@ -149,7 +149,7 @@ const en = {
         q: 'How do we register?',
         a: 'Book a call in the calendar above. We confirm availability for your team and send your pro-forma invoice within 24h. A 30% deposit secures your spot.',
       },
-      { q: 'How many players per team?', a: 'The format is 7-a-side (F7): 7 players minimum, up to 12 recommended so everyone can rotate.' },
+      { q: 'How many players per team?', a: 'The format is 7-a-side football (F7): 7 players on the pitch. Each team needs at least 10 players (for substitutions in case of injury) and 14 at most.' },
       {
         q: 'Do we need to be good at football?',
         a: 'No. It is football between colleagues — friendliness and fair-play first. As our brochure puts it: "This is not the World Cup, don\'t forget it!"',
@@ -233,7 +233,7 @@ const en = {
       },
       {
         title: 'Prepare 3 quick answers',
-        text: 'How many players (7 to 12 per team), which category (Seniors, Veterans or Women), and whether anyone needs a single room.',
+        text: 'How many players (10 to 14 per team), which category (Seniors, Veterans or Women), and whether anyone needs a single room.',
       },
       {
         title: 'Get your quote in 24h',
@@ -255,7 +255,7 @@ const fr: Dict = {
   meta: {
     title: 'International 7 Cup 2027 · Grand Stade de Marrakech — Jouez comme un Pro',
     description:
-      "Le tournoi international de football inter-entreprises. 4 jours tout compris au Grand Stade de Marrakech, du 27 au 30 mai 2027. 22 pays, 3 500+ participants, 64 équipes maximum.",
+      "Le tournoi international de football à 7 inter-entreprises. 4 jours tout compris au Grand Stade de Marrakech, du 27 au 30 mai 2027. 22 pays, 3 500+ participants, 64 équipes maximum.",
     ogTitle: 'International 7 Cup 2027 — Jouez comme un Pro au Grand Stade de Marrakech',
     ogDescription: '4 jours tout compris. 22 pays. 64 équipes max. Réservez votre appel.',
   },
@@ -276,7 +276,7 @@ const fr: Dict = {
     chip: '12ème Édition · 27–30 mai 2027',
     title1: 'Votre équipe',
     title2: 'joue comme des pros.',
-    subPre: 'Le tournoi international de football inter-entreprises au ',
+    subPre: 'Le tournoi international de football à 7 inter-entreprises au ',
     subStrong: 'Grand Stade de Marrakech',
     subPost: '. Quatre jours tout compris : pelouse pro, hôtel 5★, soirée de gala et diffusion TV.',
     ctaBook: 'Réserver mon appel gratuit',
@@ -339,7 +339,7 @@ const fr: Dict = {
     eyebrow: 'Le Programme',
     title: '4 jours. Zéro surprise. ',
     titleEm: 'Tout inclus.',
-    lead: "Une organisation militaire. Vous venez avec l'équipe — on s'occupe du reste.",
+    lead: "Une organisation de haut niveau. Vous venez avec l'équipe — on s'occupe du reste.",
     highlight: '★ Point culminant',
     days: [
       { date: 'Jeu · 27 mai', title: "L'Arrivée", items: ['Accueil à votre hôtel 5★', 'Transferts aéroport gérés', 'Dîner, boissons incluses'] },
@@ -349,7 +349,7 @@ const fr: Dict = {
     ],
     format: [
       ['Terrain', 'Pelouse naturelle, norme FIFA'],
-      ['Équipes', 'Foot à 7 · 7 à 12 joueurs'],
+      ['Équipes', 'Foot à 7 · 10 à 14 joueurs'],
       ['Matchs', '2 × 12 min · min. 3 matchs'],
       ['Sécurité', 'Arbitres officiels + staff médical'],
     ],
@@ -403,7 +403,7 @@ const fr: Dict = {
       },
       {
         q: 'Combien de joueurs par équipe ?',
-        a: 'Le format est du football à 7 (F7) : 7 joueurs minimum, et jusqu’à 12 recommandés pour faire tourner tout le monde.',
+        a: 'Le format est du football à 7 (F7) : 7 joueurs sur le terrain. Chaque équipe doit compter au minimum 10 joueurs (pour les remplacements en cas de blessure) et au maximum 14.',
       },
       {
         q: 'Faut-il être bon au foot ?',
@@ -488,7 +488,7 @@ const fr: Dict = {
       },
       {
         title: 'Préparez 3 réponses',
-        text: "Combien de joueurs (7 à 12 par équipe), quelle catégorie (Seniors, Vétérans ou Féminines), et si certains ont besoin d'une chambre single.",
+        text: "Combien de joueurs (10 à 14 par équipe), quelle catégorie (Seniors, Vétérans ou Féminines), et si certains ont besoin d'une chambre single.",
       },
       {
         title: 'Votre devis sous 24h',

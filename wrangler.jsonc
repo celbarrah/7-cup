@@ -5,9 +5,6 @@
 	"main": ".open-next/worker.js",
 	"compatibility_date": "2025-10-01",
 	"compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
-	// Attaches info.ic7m.com to this Worker on every deploy (the ic7m.com zone must be on
-	// Cloudflare; Cloudflare creates the proxied DNS record + certificate itself)
-	"routes": [{ "pattern": "info.ic7m.com", "custom_domain": true }],
 	"assets": {
 		"directory": ".open-next/assets",
 		"binding": "ASSETS"

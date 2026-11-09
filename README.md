@@ -22,7 +22,7 @@ Cloudflare dashboard → Workers Builds settings:
 
 The Worker name in the dashboard must match `"name"` in `wrangler.jsonc` (`7-cup`).
 
-**Domain:** `wrangler.jsonc` declares `info.ic7m.com` as a Worker Custom Domain, so each deploy attaches it (DNS record + SSL created by Cloudflare). Requirements: the `ic7m.com` zone is on the same Cloudflare account, and no other DNS record already exists for `info` (delete the old Vercel CNAME first).
+**Domain:** a Worker Custom Domain (`info.ic7m.com`) can only be added from the Cloudflare account that manages the `ic7m.com` zone. Worker → Settings → Domains & Routes → Add → Custom domain.
 
 Locally: `npm run preview` builds and runs the Worker in the real Cloudflare runtime (http://localhost:8787); `npm run deploy` deploys from your machine (needs `npx wrangler login`).
 

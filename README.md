@@ -8,12 +8,25 @@ npm run dev     # http://localhost:3000  →  redirects to /fr
 npm run build && npm start
 ```
 
-## Deploy (Vercel)
+## Deploy (Cloudflare Workers via OpenNext)
 
-1. vercel.com → **Add New → Project** → import `celbarrah/7-cup`. Framework is auto-detected (Next.js); keep the default build settings.
-2. **Settings → Domains** → add `info.ic7m.com`, then create the DNS record Vercel shows at your DNS provider (a `CNAME` for `info` pointing to Vercel).
+Hosted on Cloudflare Workers using [`@opennextjs/cloudflare`](https://opennext.js.org/cloudflare). Config: `wrangler.jsonc`, `open-next.config.ts`, `public/_headers`.
 
-Every push to `main` deploys to production; other branches get preview URLs.
+Cloudflare dashboard → Workers Builds settings:
+
+| Setting | Value |
+| --- | --- |
+| Build command | `npx opennextjs-cloudflare build` |
+| Deploy command | `npx opennextjs-cloudflare deploy` |
+| Preview (non-production branch) command | `npx opennextjs-cloudflare upload` |
+
+The Worker name in the dashboard must match `"name"` in `wrangler.jsonc` (`7-cup`).
+
+**Domain:** `wrangler.jsonc` declares `info.ic7m.com` as a Worker Custom Domain, so each deploy attaches it (DNS record + SSL created by Cloudflare). Requirements: the `ic7m.com` zone is on the same Cloudflare account, and no other DNS record already exists for `info` (delete the old Vercel CNAME first).
+
+Locally: `npm run preview` builds and runs the Worker in the real Cloudflare runtime (http://localhost:8787); `npm run deploy` deploys from your machine (needs `npx wrangler login`).
+
+All pages are prerendered and served from the read-only static-assets cache — no R2/KV needed. `next/image` resizing uses the Cloudflare Images binding (`IMAGES`).
 
 ## Routes
 

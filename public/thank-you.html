@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<title>International 7 Cup</title>
+<noscript><meta http-equiv="refresh" content="0;url=/fr/thank-you"></noscript>
+<script>
+  // Post-booking URL set in the calendar: send the visitor to the thank-you page in the language they booked in
+  var m = document.cookie.match(/(?:^|;\s*)ic7m_lang=(fr|en)/);
+  location.replace('/' + (m ? m[1] : 'fr') + '/thank-you' + location.search + location.hash);
+</script>
+</head>
+<body style="background:#0b0b0c"></body>
+</html>

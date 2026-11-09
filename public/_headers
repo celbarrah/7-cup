@@ -1,7 +1,13 @@
-# Cloudflare serves static assets directly (bypassing the Worker), so their headers live here.
+# Cloudflare Pages response headers
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+
 /_next/static/*
   Cache-Control: public, max-age=31536000, immutable
-
 /images/*
   Cache-Control: public, max-age=31536000, immutable
 /logos/*
@@ -12,8 +18,3 @@
   Cache-Control: public, max-age=31536000, immutable
 /icons/*
   Cache-Control: public, max-age=31536000, immutable
-
-/*
-  X-Content-Type-Options: nosniff
-  Referrer-Policy: strict-origin-when-cross-origin
-  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload

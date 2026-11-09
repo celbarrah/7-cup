@@ -1,0 +1,3 @@
+# Cloudflare Pages redirects (/thank-you is a static page that picks the language, see thank-you.html)
+/          /fr           302
+/feed.xml  /fr/feed.xml  301

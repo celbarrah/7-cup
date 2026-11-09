@@ -56,6 +56,10 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
       languages: { fr: '/fr', en: '/en', 'x-default': `/${DEFAULT_LANG}` },
       types: { 'application/rss+xml': [{ url: `/${lang}/feed.xml`, title: SITE_NAME }] },
     },
+    icons: {
+      icon: [{ url: '/icons/icon-96.png', sizes: '96x96', type: 'image/png' }],
+      apple: [{ url: '/icons/apple-icon.png', sizes: '180x180', type: 'image/png' }],
+    },
     openGraph: {
       type: 'website',
       url: `/${lang}`,

@@ -5,28 +5,26 @@ Landing page for the **International 7 Cup 2027** (Grand Stadium of Marrakech) �
 ```bash
 npm install
 npm run dev     # http://localhost:3000  →  redirects to /fr
-npm run build && npm start
+npm run build   # static site in out/
 ```
 
-## Deploy (Cloudflare Workers via OpenNext)
+## Deploy (Cloudflare Pages, static export)
 
-Hosted on Cloudflare Workers using [`@opennextjs/cloudflare`](https://opennext.js.org/cloudflare). Config: `wrangler.jsonc`, `open-next.config.ts`, `public/_headers`.
+The site is a static export (`output: 'export'`): `npm run build` writes plain HTML/CSS/JS to `out/`.
 
-Cloudflare dashboard → Workers Builds settings:
+Cloudflare dashboard → Workers & Pages → Create → **Pages** → Connect to Git → `celbarrah/7-cup`:
 
 | Setting | Value |
 | --- | --- |
-| Build command | `npx opennextjs-cloudflare build` |
-| Deploy command | `npx opennextjs-cloudflare deploy` |
-| Preview (non-production branch) command | `npx opennextjs-cloudflare upload` |
+| Framework preset | None |
+| Build command | `npm run build` |
+| Build output directory | `out` |
 
-The Worker name in the dashboard must match `"name"` in `wrangler.jsonc` (`7-cup`).
+Node 22 is pinned in `.node-version`.
 
-**Domain:** a Worker Custom Domain (`info.ic7m.com`) can only be added from the Cloudflare account that manages the `ic7m.com` zone. Worker → Settings → Domains & Routes → Add → Custom domain.
+**Domain:** Pages project → Custom domains → add `info.ic7m.com`, then at the DNS provider (Infomaniak) replace the `info` record with `CNAME info → <project>.pages.dev`.
 
-Locally: `npm run preview` builds and runs the Worker in the real Cloudflare runtime (http://localhost:8787); `npm run deploy` deploys from your machine (needs `npx wrangler login`).
-
-All pages are prerendered and served from the read-only static-assets cache — no R2/KV needed. `next/image` resizing uses the Cloudflare Images binding (`IMAGES`).
+Redirects and headers live in `public/_redirects` and `public/_headers` (read by Cloudflare Pages). `/thank-you` is `public/thank-you.html`, which sends the visitor to `/fr/thank-you` or `/en/thank-you` based on the `ic7m_lang` cookie. Images in `public/` are served as-is (already compressed WebP).
 
 ## Routes
 

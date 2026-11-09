@@ -1,3 +1,5 @@
+export const dynamic = 'force-static';
+
 import type { MetadataRoute } from 'next';
 import { CONTENT_UPDATED, SITE_URL } from '@/lib/config';
 import { LOCALES } from '@/lib/i18n';

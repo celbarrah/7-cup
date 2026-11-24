@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { afterLoad } from '@/lib/hls';
 import { onFirstInteraction } from '@/lib/defer';
 import { BOOKING_EMBED_JS, BOOKING_ID, BOOKING_URL } from '@/lib/config';
+import { isBookingConfirmedMessage, trackBookingOnce } from '@/lib/track';
 
 /**
  * The calendar iframe is mounted as early as possible without hurting first paint:
@@ -47,6 +48,20 @@ export default function BookingCalendar({ title, openLabel }: { title: string; o
       document.removeEventListener('touchstart', onIntent, opts);
       document.removeEventListener('focusin', onIntent, opts);
       stopWaiting();
+    };
+  }, [mounted]);
+
+  // Booking confirmed inside the widget → conversion (once per session, shared with /thank-you)
+  useEffect(() => {
+    if (!mounted) return;
+    let stop = () => {};
+    const onMessage = (e: MessageEvent) => {
+      if (isBookingConfirmedMessage(e)) stop = trackBookingOnce('widget');
+    };
+    window.addEventListener('message', onMessage);
+    return () => {
+      window.removeEventListener('message', onMessage);
+      stop();
     };
   }, [mounted]);
 

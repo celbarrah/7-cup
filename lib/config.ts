@@ -13,6 +13,8 @@ export const muxSrc = (id: string) => `https://stream.mux.com/${id}.m3u8`;
 // Tracking IDs carried over from the current info.ic7m.com site
 export const GA_ID = 'G-8XKZEMQSHS';
 export const META_PIXEL_ID = '723038636898692';
+// "I7CM - Webeuz" (Meta campaign I7CM): PageView on load + Schedule once on booking confirmation
+export const META_PIXEL_ID_I7CM = '1957823195180290';
 export const LINKEDIN_PARTNER_ID = '8250642';
 
 export const CONTACT = {

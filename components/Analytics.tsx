@@ -2,7 +2,8 @@
 
 import { useEffect } from 'react';
 import { onFirstInteraction } from '@/lib/defer';
-import { GA_ID, LINKEDIN_PARTNER_ID, META_PIXEL_ID } from '@/lib/config';
+import { afterLoad } from '@/lib/hls';
+import { GA_ID, LINKEDIN_PARTNER_ID, META_PIXEL_ID, META_PIXEL_ID_I7CM } from '@/lib/config';
 
 type W = Window & {
   dataLayer?: unknown[];
@@ -26,21 +27,10 @@ const addScript = (src: string) => {
  * while none of the ~300KB of tag code competes with the first render.
  */
 export default function Analytics() {
+  // Meta Pixels: PageView on page load (after the load event, so first render is untouched)
   useEffect(() => {
-    return onFirstInteraction(() => {
+    return afterLoad(() => {
       const w = window as W;
-
-      // Google Analytics 4
-      w.dataLayer = w.dataLayer || [];
-      w.gtag = function gtag() {
-        // eslint-disable-next-line prefer-rest-params
-        w.dataLayer!.push(arguments);
-      };
-      w.gtag('js', new Date());
-      w.gtag('config', GA_ID);
-      addScript(`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`);
-
-      // Meta Pixel (standard bootstrap, queues calls until fbevents.js arrives)
       if (!w.fbq) {
         const fbq = function (...args: unknown[]) {
           if (fbq.callMethod) fbq.callMethod(...args);
@@ -55,7 +45,25 @@ export default function Analytics() {
         addScript('https://connect.facebook.net/en_US/fbevents.js');
       }
       w.fbq('init', META_PIXEL_ID);
-      w.fbq('track', 'PageView');
+      w.fbq('init', META_PIXEL_ID_I7CM);
+      w.fbq('track', 'PageView'); // sent to both pixels
+    });
+  }, []);
+
+  // GA4 + LinkedIn: first interaction, 5s at the latest
+  useEffect(() => {
+    return onFirstInteraction(() => {
+      const w = window as W;
+
+      // Google Analytics 4
+      w.dataLayer = w.dataLayer || [];
+      w.gtag = function gtag() {
+        // eslint-disable-next-line prefer-rest-params
+        w.dataLayer!.push(arguments);
+      };
+      w.gtag('js', new Date());
+      w.gtag('config', GA_ID);
+      addScript(`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`);
 
       // LinkedIn Insight
       w._linkedin_partner_id = LINKEDIN_PARTNER_ID;

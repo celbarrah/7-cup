@@ -1,4 +1,4 @@
-export const SITE_URL = 'https://info.ic7m.com';
+export const SITE_URL = 'https://infos.ic7m.com';
 export const SITE_NAME = 'International 7 Cup Marrakech';
 // Bump when page content changes meaningfully (sitemap lastmod / feed dates)
 export const CONTENT_UPDATED = '2026-10-28T12:00:00+01:00';

@@ -22,7 +22,7 @@ Cloudflare dashboard → Workers & Pages → Create → **Pages** → Connect to
 
 Node 22 is pinned in `.node-version`.
 
-**Domain:** Pages project → Custom domains → add `info.ic7m.com`, then at the DNS provider (Infomaniak) replace the `info` record with `CNAME info → <project>.pages.dev`.
+**Domain:** Pages project → Custom domains → add `infos.ic7m.com` (DNS at Infomaniak: `CNAME infos → 7-cup.pages.dev`).
 
 Redirects and headers live in `public/_redirects` and `public/_headers` (read by Cloudflare Pages). `/thank-you` is `public/thank-you.html`, which sends the visitor to `/fr/thank-you` or `/en/thank-you` based on the `ic7m_lang` cookie. Images in `public/` are served as-is (already compressed WebP).
 
@@ -36,7 +36,7 @@ Redirects and headers live in `public/_redirects` and `public/_headers` (read by
 | `/sitemap.xml`, `/robots.txt`, `/manifest.webmanifest` | generated from `app/sitemap.ts`, `app/robots.ts`, `app/manifest.ts` |
 | `/feed.xml` → `/fr/feed.xml`, `/en/feed.xml` | RSS 2.0 feeds |
 
-**Booking calendar setting:** in the calendar's confirmation settings, set *Redirect to URL* to `https://info.ic7m.com/thank-you`.
+**Booking calendar setting:** in the calendar's confirmation settings, set *Redirect to URL* to `https://infos.ic7m.com/thank-you`.
 
 ## Where things live
 

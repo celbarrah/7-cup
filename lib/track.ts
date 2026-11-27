@@ -12,17 +12,24 @@ const KEY = 'ic7m_booking_tracked';
  * the booking widget's confirmation message (landing page) or the /thank-you page.
  * Waits for the lazily-loaded tags; Meta "Schedule" goes to both pixels.
  */
+let running = false;
+
 export function trackBookingOnce(source: string): () => void {
+  // The session flag is written only AFTER the event is really sent: the widget confirmation
+  // is immediately followed by the redirect to /thank-you, which must still be able to send it
+  // if the page was left before the tags were ready.
   try {
-    if (sessionStorage.getItem(KEY)) return () => {};
-    sessionStorage.setItem(KEY, source);
-  } catch {}
+    if (sessionStorage.getItem(KEY) || running) return () => {};
+  } catch {
+    if (running) return () => {};
+  }
+  running = true;
 
   const w = window as W;
   let sentGa = false;
   let sentMeta = false;
   let tries = 0;
-  const id = window.setInterval(() => {
+  const send = () => {
     tries += 1;
     if (!sentGa && w.gtag) {
       w.gtag('event', 'generate_lead', { method: 'booking_call' });
@@ -32,10 +39,21 @@ export function trackBookingOnce(source: string): () => void {
       w.fbq('trackSingle', META_PIXEL_ID, 'Schedule');
       w.fbq('trackSingle', META_PIXEL_ID_I7CM, 'Schedule');
       sentMeta = true;
+      try {
+        sessionStorage.setItem(KEY, source);
+      } catch {}
     }
-    if ((sentGa && sentMeta) || tries > 60) window.clearInterval(id);
-  }, 500);
-  return () => window.clearInterval(id);
+    if ((sentGa && sentMeta) || tries > 120) {
+      window.clearInterval(id);
+      running = false;
+    }
+  };
+  const id = window.setInterval(send, 250);
+  send();
+  return () => {
+    window.clearInterval(id);
+    running = false;
+  };
 }
 
 /** True when a postMessage from the booking widget reports a confirmed appointment. */
